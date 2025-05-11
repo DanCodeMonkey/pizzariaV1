@@ -1,3 +1,5 @@
-# pizzariaV1
-Inicia das atividades em grupo da materia de Lógica de Programação.
-Criado o embrião do software em c++ que faz as contas de quanto uma mesa gastou consumindo os itens de uma pizzaria dividido por clientes na mesa.
+# pizzariaV2
+Segunda fase da atividade de Lógica de Programação da Fatec Votorantim 1DSM.
+Nessa fase corrigimos os códigos segundo algumas sugestões do professor.
+Aplicamos um calculo de desconto de acordo com o valor total da conta do cliente.
+Criamos novas saídas de dados para esses novos valores.
