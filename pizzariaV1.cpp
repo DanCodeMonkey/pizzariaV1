@@ -55,7 +55,7 @@ int main()
     fflush(stdout);
     scanf("%d", &NumeroPessoasMesa);
 
-    
+
     //processamento de dados
     totalConta = totalPizzaMistaGrande + totalChopp + totalCobertura + totalRefri + totalAgua;
     valorGorjeta = totalConta * gorjeta;
@@ -75,7 +75,7 @@ int main()
 
     totalContaEGorjetaEDesconto = totalContaEGorjeta - desconto;
 
-    valorPorPessoa = totalContaEGorjeta / NumeroPessoasMesa;
+    valorPorPessoa = totalContaEGorjetaEDesconto / NumeroPessoasMesa;
 
 
     //saída de dados
@@ -91,7 +91,7 @@ int main()
     printf("Desconto em porcentagem: %.1f%% \n", descontoPorcentagem);
     printf("Total consumo + gorjeta com desconto: R$%.2f \n", totalContaEGorjetaEDesconto);
     printf("Quantidade de pessoas na mesa: %d \n", NumeroPessoasMesa);
-    printf("Total a pagar por pessoa: R$%.2f\n", valorPorPessoa);
+    printf("Total a pagar por pessoa: R$%.2f\n\n\n\n", valorPorPessoa);
 
     system("pause");
 
