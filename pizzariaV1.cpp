@@ -8,7 +8,8 @@
 // Gustavo Polâino
 // Rodrigo Kauan da Silva Santos
 
-int main() {
+int main()
+{
 
     setlocale(LC_ALL,"pt_BR.UTF-8");//mudar dentro do aspas dessa forma
     SetConsoleOutputCP(65001);//Adicionar essa linha logo abaixo do setlocale
@@ -16,65 +17,81 @@ int main() {
     system("cls");
 
     // declaração de variáveis
-    const float pizzaMistaGrande = 46;
-    const float chopp = 12;
-    const float cobertura = 8;
-    const float refri360ml = 6;
-    const float agua500ml = 6;
-    unsigned int numeroPessoasMesa;
+    const float pizzaMistaGrande = 46, chopp = 12, cobertura = 8, refri = 6, agua = 4;
+    unsigned int NumeroPessoasMesa;
+    unsigned int quantidade;
+    float totalPizzaMistaGrande, totalChopp, totalCobertura, totalRefri, totalAgua, totalConta, gorjeta = 0.1, valorGorjeta, totalContaEGorjeta, valorPorPessoa, desconto, descontoPorcentagem, totalContaEGorjetaEDesconto;
 
-    unsigned int mult;
 
     // Entrada de dados
-    printf("RESUMO DO VALOR DE CONSUMA DE MESA DA PIZZARIA \n\n");
+    printf(" <--- FECHAMENTO DE CONTA DE MESA DA PIZZARIA ---> \n\n");
+
     printf("Nº de pizzas: \n");
     fflush(stdout);
-    scanf("%d", &mult);
-    float totalPizzaMistaGrande = mult * pizzaMistaGrande;
+    scanf("%d", &quantidade);
+    totalPizzaMistaGrande = quantidade * pizzaMistaGrande;
 
     printf("Nº de chopp: \n");
     fflush(stdout);
-    scanf("%d", &mult);
-    float totalChopp = mult * chopp;
+    scanf("%d", &quantidade);
+    totalChopp = quantidade * chopp;
 
     printf("Nº de coberturas: \n");
     fflush(stdout);
-    scanf("%d", &mult);
-    float totalCobertura = mult * cobertura;
+    scanf("%d", &quantidade);
+    totalCobertura = quantidade * cobertura;
 
-    printf("Nº de refrigerante 360ml: \n");
+    printf("Nº de refrigerante: \n");
     fflush(stdout);
-    scanf("%d", &mult);
-    float totalRefri360ml = mult * refri360ml;
+    scanf("%d", &quantidade);
+    totalRefri = quantidade * refri;
 
-    printf("Nº de agua 500ml: \n");
+    printf("Nº de agua: \n");
     fflush(stdout);
-    scanf("%d", &mult);
-    float totalAgua500ml = mult * agua500ml;
+    scanf("%d", &quantidade);
+    totalAgua = quantidade * agua;
 
     printf("Nº de pessoas na mesa: \n");
     fflush(stdout);
-    scanf("%d", &numeroPessoasMesa);
+    scanf("%d", &NumeroPessoasMesa);
 
+    
     //processamento de dados
-    float totalConta = totalPizzaMistaGrande + totalChopp + totalCobertura + totalRefri360ml + totalAgua500ml;
-    float gorjeta = 0.1;
-    float valorGorjeta = totalConta * gorjeta;
-    float totalContaEGorjeta = totalConta + valorGorjeta;
+    totalConta = totalPizzaMistaGrande + totalChopp + totalCobertura + totalRefri + totalAgua;
+    valorGorjeta = totalConta * gorjeta;
+    totalContaEGorjeta = totalConta + valorGorjeta;
 
-    float valorPorPessoa = totalContaEGorjeta / numeroPessoasMesa;
+
+    //aplicação de descontos por quantia gasta
+    if(totalContaEGorjeta > 0 && totalContaEGorjeta <= 300){
+      desconto = totalContaEGorjeta * 0.052;
+    }else if(totalContaEGorjeta > 300 && totalContaEGorjeta <= 600){
+        desconto = totalContaEGorjeta * 0.08;
+    }else{
+        desconto = totalContaEGorjeta * 0.1;
+    }
+
+    descontoPorcentagem = (desconto / totalContaEGorjeta) *100;
+
+    totalContaEGorjetaEDesconto = totalContaEGorjeta - desconto;
+
+    valorPorPessoa = totalContaEGorjeta / NumeroPessoasMesa;
+
 
     //saída de dados
     system("cls");
 
-    printf("RESUMO DA CONTA \n\n");
+    printf(" <--- FECHAMENTO DE CONTA DE MESA DA PIZZARIA ---> \n\n");
 
     printf("Total sem gorjeta: R$%.2f \n", totalConta);
-    printf("Valor da gorjeta: R$%.2f \n", valorGorjeta);
-    printf("Porcentagem da gorjeta: %.f%%\n", gorjeta * 100);
+    printf("Valor da gorjeta em reais: R$%.2f \n", valorGorjeta);
+    printf("Valor da gorjeta em porcentagem: %.2f%%\n", gorjeta * 100);
     printf("Total consumo + gorjeta: R$%.2f \n", totalContaEGorjeta);
-    printf("Quantidade de pessoas na mesa: %d \n", numeroPessoasMesa);
-    printf("Total a pagar pro pessoa: R$%.2f \n\n", valorPorPessoa);
+    printf("Desconto em reais: R$%.2f \n", desconto);
+    printf("Desconto em porcentagem: %.1f%% \n", descontoPorcentagem);
+    printf("Total consumo + gorjeta com desconto: R$%.2f \n", totalContaEGorjetaEDesconto);
+    printf("Quantidade de pessoas na mesa: %d \n", NumeroPessoasMesa);
+    printf("Total a pagar por pessoa: R$%.2f\n", valorPorPessoa);
 
     system("pause");
 
